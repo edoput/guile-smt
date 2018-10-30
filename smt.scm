@@ -66,8 +66,12 @@
   (syntax-rules ()
                 ((_ name v)
                  (begin
-                   (display `(declare-datatypes ((,name ,@v))))
+                   (display `(declare-datatypes () ((,name ,@v))))
                    (newline)))))
+;                 (_ name params v)
+;                 (begin
+;                   (display `(declare-datatypes (,@params) ((,name ,@v))))
+;                   (newline)))))
 
 (define-syntax smt-record
   (syntax-rules ()
