@@ -3,6 +3,7 @@
                           smt-check-sat
                           smt-comment
                           smt-const
+                          smt-fun
                           smt-get-model
                           smt-maximize
                           smt-minimize
@@ -43,7 +44,7 @@
 
 (define-syntax smt-fun
   (syntax-rules ()
-                ((_ name input-sort ouput-sort)
+                ((_ name input-sort output-sort)
                  (begin
                    (display `(declare-fun ,name (,@input-sort) ,output-sort))
                    (newline)))
