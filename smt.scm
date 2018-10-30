@@ -4,7 +4,7 @@
                           smt-comment
                           smt-const
                           smt-get-model
-                          smt-maximise
+                          smt-maximize
                           smt-minimize
                           smt-quoted-symbol
                           smt-record
@@ -55,11 +55,11 @@
                    (display `(minimize ,e))
                    (newline)))))
 
-(define-syntax smt-maximise
+(define-syntax smt-maximize
   (syntax-rules ()
                 ((_ e)
                  (begin
-                   (display `(maximise ,e))
+                   (display `(maximize ,e))
                    (newline)))))
 
 (define-syntax smt-scalar
