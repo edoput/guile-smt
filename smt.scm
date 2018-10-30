@@ -50,7 +50,7 @@
                    (newline)))
                 ((_ name input-sort output-sort e)
                  (begin
-                   (display `(define-fun ,name (,@input-sort) ,ouput-sort
+                   (display `(define-fun ,name (,@input-sort) ,output-sort
                                          e))
                    (newline)))))
 
