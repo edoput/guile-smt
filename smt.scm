@@ -64,9 +64,9 @@
 
 (define-syntax smt-scalar
   (syntax-rules ()
-                ((_ name v ...)
+                ((_ name v)
                  (begin
-                   (display `(declare-datatypes ((,name ,v ...))))
+                   (display `(declare-datatypes ((,name ,@v))))
                    (newline)))))
 
 (define-syntax smt-record
