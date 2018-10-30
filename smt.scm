@@ -30,7 +30,7 @@
   (syntax-rules ()
                 ((_ name)
                  (begin
-                   (display `(declare-sort ,name ()))
+                   (display `(declare-sort ,name 0))
                    (newline)))
                 ((_ name e)
                  (begin
@@ -38,7 +38,19 @@
                    (newline)))
                 ((_ name parameters e)
                  (begin
-                   (display `(define-sort ,name (,@ parameters) ,@e))
+                   (display `(define-sort ,name (,@parameters) ,@e))
+                   (newline)))))
+
+(define-syntax smt-fun
+  (syntax-rules ()
+                ((_ name input-sort ouput-sort)
+                 (begin
+                   (display `(declare-fun ,name (,@input-sort) ,output-sort))
+                   (newline)))
+                ((_ name input-sort output-sort e)
+                 (begin
+                   (display `(define-fun ,name (,@input-sort) ,ouput-sort
+                                         e))
                    (newline)))))
 
 (define-syntax smt-const
