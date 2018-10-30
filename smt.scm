@@ -38,7 +38,7 @@
                    (newline)))
                 ((_ name parameters e)
                  (begin
-                   (display `(declare-sort ,name (,@ parameters) ,e))
+                   (display `(declare-sort ,name (,@ parameters) ,@e))
                    (newline)))))
 
 (define-syntax smt-const
