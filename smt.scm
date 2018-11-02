@@ -8,6 +8,8 @@
                           smt-maximize
                           smt-minimize
                           smt-quoted-symbol
+                          smt-push
+                          smt-pop
                           smt-record
                           smt-scalar
                           smt-sort))
@@ -92,6 +94,19 @@
                  (begin
                    (display `(declare-datatypes ((,name (constructor (some field))))))
                    (newline)))))
+
+(define-syntax smt-push
+  (syntax-rules ()
+                ((_ n e)
+                 (begin
+                   (display `(push ,n))
+                   (newline)
+                   e))))
+
+(define smt-pop
+  (lambda (n)
+    (display `(pop ,n))
+    (newline)))
 
 (define-syntax make-symbol 
   (syntax-rules ()
