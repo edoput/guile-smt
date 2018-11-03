@@ -3,6 +3,7 @@
                           smt-check-sat
                           smt-comment
                           smt-const
+                          smt-distinct
                           smt-fun
                           smt-get-model
                           smt-maximize
@@ -76,6 +77,11 @@
                  (begin
                    (display `(maximize ,e))
                    (newline)))))
+
+(define smt-distinct
+  (lambda v
+    (display `(distinct ,@v))
+    (newline)))
 
 (define-syntax smt-scalar
   (syntax-rules ()
