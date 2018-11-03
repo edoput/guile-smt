@@ -8,11 +8,11 @@
 (smt-const 'd 'A)
 
 (smt-push 1)
-(smt-distinct 'a 'b 'c)
-(check-sat)
+(smt-assert (smt-distinct 'a 'b 'c))
+(smt-check-sat)
 (smt-pop 1)
 
 (smt-push 1)
-(smt-distinct 'a 'b 'c 'd)
-(check-sat)
-(smt-pop)
+(smt-assert (smt-distinct 'a 'b 'c 'd))
+(smt-check-sat)
+(smt-pop 1)

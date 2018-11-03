@@ -13,7 +13,8 @@
                           smt-pop
                           smt-record
                           smt-scalar
-                          smt-sort))
+                          smt-sort
+                          with-current-assertion-set))
 
 (define *bug-report* "https://github.com/edoput/guile-smt/issues")
 
@@ -80,8 +81,7 @@
 
 (define smt-distinct
   (lambda v
-    (display `(distinct ,@v))
-    (newline)))
+    `(distinct ,@v)))
 
 (define-syntax smt-scalar
   (syntax-rules ()
@@ -101,13 +101,19 @@
                    (display `(declare-datatypes ((,name (constructor (some field))))))
                    (newline)))))
 
+(define-syntax with-current-assertion-set
+  (syntax-rules ()
+                ((_ e)
+                 (let ((n (length e)))
+                   (smt-push n e)
+                   (smt-pop n)))))
+
 (define-syntax smt-push
   (syntax-rules ()
-                ((_ n e)
+                ((_ n)
                  (begin
                    (display `(push ,n))
-                   (newline)
-                   e))))
+                   (newline)))))
 
 (define smt-pop
   (lambda (n)
