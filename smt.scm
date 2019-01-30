@@ -96,9 +96,13 @@
 
 (define-syntax smt-record
   (syntax-rules ()
-                ((_ name)
+                ((_ name fields)
                  (begin
-                   (display `(declare-datatypes ((,name (constructor (some field))))))
+                   (display
+                     `(declare-datatypes
+                        ((,name (
+                                 ,(string-append "mk-" (symbol->string name))
+                                 ,@fields)))))
                    (newline)))))
 
 (define-syntax with-current-assertion-set
