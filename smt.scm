@@ -99,7 +99,15 @@
                 ((_ name fields)
                  (begin
                    (display
-                     `(declare-datatypes
+                     `(declare-datatypes ()
+                        ((,name (
+                                 ,(string-append "mk-" (symbol->string name))
+                                 ,@fields)))))
+                   (newline)))
+                 ((_ name fields types)
+                  (begin
+                   (display
+                     `(declare-datatypes ,(list types)
                         ((,name (
                                  ,(string-append "mk-" (symbol->string name))
                                  ,@fields)))))
