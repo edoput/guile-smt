@@ -14,7 +14,8 @@ Write SMT syntax from Guile.
 | declare-const bar Int | smt-const 'foo 'Int |
 | minimize e | smt-minimize e |
 | maximize e | smt-maximize e |
-| declare-datatypes () ((A (mk-A ((Foo T) (Bar V) (Baz K))))) | smt-scalar 'A '((Foo T) (Bar V) (Baz K)) |
+| declare-datatypes () ((A (Foo Bar Baz ))) | smt-scalar 'A '(Foo Bar Baz) |
+| declare-datatypes () ((A (mk-A ((Foo T) (Bar V) (Baz K))))) | smt-record 'A '((Foo T) (Bar V) (Baz K)) |
 | ; a comment | smt-comment "a comment" |
 | check-sat | smt-check-sat |
 | get-model | smt-get-model |
