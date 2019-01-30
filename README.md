@@ -3,6 +3,8 @@ SMT
 
 Write SMT syntax from Guile.
 
+Some examples in the `examples` directory
+
 | SMT | Scheme |
 |-----|--------|
 | assert e | smt-assert 'e |
